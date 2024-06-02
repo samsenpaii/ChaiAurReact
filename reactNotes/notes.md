@@ -52,3 +52,14 @@ here bsically the html Element to be added to the web is been converted into tre
 <button onClick={()=> setcolor('red')}>red</button>
 
 ```
+## key in ract components inside loop
+while doing loop using map in jsx to repeate a component , we must add key in the components to imnprove the performance as the react dose not know that it is using the same component again and again .
+
+## create index.js for easy compoents access
+import all the components that are been created inside the 'index.js' file and export them ffrom there like 
+import InputBox from './InputBox.jsx'
+
+export defult {InputBox}
+
+## useId() hook 
+used to generate random id , which can be used in lable so that each lable is unique. Must not be used for the data that is been used to assign a key for each data, as per doc.
