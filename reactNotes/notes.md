@@ -145,7 +145,7 @@ const {userId} = useParams()
 <Route path='User/:userId' element={<User/>}/>
 ```
 
-## during a api call to be done when a pade is loaded 
+## during a api call to be done when a page is to be loaded 
 when we use the normal useEffect hook to call an api to get data when a page is loaded 
 then it is a bit slow and not fully optimised 
 so to optimise it fully we used 
@@ -162,4 +162,3 @@ and in the Route in main.jsx we mention this method in Loader attribute foe the 
       path='Github'
       element={<Github/>}/>
       ```
-      
