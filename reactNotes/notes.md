@@ -63,3 +63,103 @@ export defult {InputBox}
 
 ## useId() hook 
 used to generate random id , which can be used in lable so that each lable is unique. Must not be used for the data that is been used to assign a key for each data, as per doc.
+
+## Link from react router Dom 
+used insted of "a" tag as it refreshes all the page and in react we dont refresh page
+
+## Outlet in react-router-dom
+```javascript
+        <Header/>
+        <Outlet/>
+        <Footer/>
+```
+Outlet is used in order to make the above and below components same constant and change the inside componets that are been updated at the main.jsx in the following format
+
+```javascript
+    const router = createBrowserRouter([
+  {
+    path: '/',
+    element:<Layout/>,
+    children: [
+      // {
+      //   path:"",
+      //   element:<Home/>
+      // },
+      {
+        path:"samarth",
+        element:<About/>
+      }
+    ]
+  }
+])
+```
+
+## the route can be created in two ways 
+
+```javascript
+  const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout/>}>
+      <Route path='' element={<Home/>}/>
+      <Route path='/About' element={<About/>}/>
+      <Route path='/Contact' element={<Contact/>}/>
+      
+    </Route>
+  )
+)
+
+// other way is 
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element:<Layout/>,
+    children: [
+      {
+        path:"",
+        element:<Home/>
+      },
+      {
+        path:"About",
+        element:<About/>
+      },
+      {
+        path:"Contact",
+        element:<Contact/>
+      }
+    ]
+  }
+])
+
+```
+
+## to accses the data in the url 
+
+```javascript
+import { useParams } from 'react-router-dom' 
+
+const {userId} = useParams()
+
+// this below is the part needed to be done at the main.jsx
+
+<Route path='User/:userId' element={<User/>}/>
+```
+
+## during a api call to be done when a pade is loaded 
+when we use the normal useEffect hook to call an api to get data when a page is loaded 
+then it is a bit slow and not fully optimised 
+so to optimise it fully we used 
+```javascript
+export const GithubInfoLoader = async () => {
+    const response = await fetch("https://api.github.com/users/samsenpaii")
+    return response.json()
+}
+```
+and in the Route in main.jsx we mention this method in Loader attribute foe the perticular Route like 
+```javascript
+<Route
+      loader={GithubInfoLoader} 
+      path='Github'
+      element={<Github/>}/>
+      ```
+      
