@@ -160,5 +160,12 @@ and in the Route in main.jsx we mention this method in Loader attribute foe the 
 <Route
       loader={GithubInfoLoader} 
       path='Github'
-      element={<Github/>}/>
-      ```
+      element={<Github/>}/> 
+```
+
+## Redux Store setup  
+
+step 1 - configure store 
+```javascript
+
+```
